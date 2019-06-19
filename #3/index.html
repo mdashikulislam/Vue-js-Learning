@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Learning</title>
+    <link rel="stylesheet" href="../lib/bootstrap.css">
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/bootstrap.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div id="app">
+            <br>
+            <h3 :style="myStyle">The PHP Framework For Web Artisans</h3>
+            <br>
+            <h3 :class="[isActive ? 'alert alert-danger':'alert alert-success']">Love beautiful code? We do too.</h3>
+            <h3 :class="{'alert alert-success':isActive,'col-md-6':isMin}">Laravel is most popular php framework</h3>
+            <br>
+
+        </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el : '#app',
+            data:{
+                isActive: true,
+                isMin:true,
+                myStyle:{
+                    border:'3px solid red',
+                    padding:'5px',
+                    textAlign : 'center'
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
