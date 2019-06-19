@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,11 +7,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue.js Learning</title>
     <link rel="stylesheet" href="../lib/bootstrap.css">
-    <link rel="stylesheet" href="../lib/jquery.js">
-    <link rel="stylesheet" href="../lib/bootstrap.js">
-    <link rel="stylesheet" href="../lib/vue.js">
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/bootstrap.js"></script>
+
 </head>
 <body>
+    <div class="container">
+        <div id="app">
+            <h3>{{message}}</h3>
+            <h3 :class="className">{{message}}</h3>
+            <h3 v-if="show" :class="[isActive ? 'alert alert-success':'alert alert-danger']">Show or Hidden</h3>
 
+            <ol v-show="shows">
+                <li v-for="list in lists">{{list}}</li>
+            </ol>
+            <input type="text" class="form-control" v-model="message">
+            <button v-on:click="enableButton" class="btn btn-info" :style="btnStyle">Show List</button>
+            <button v-on:click="disableButton" class="btn btn-danger" :style="btnStyle">Disable List</button>
+        </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el : '#app',
+            data:{
+                message:'Vue js Test',
+                className : 'alert alert-success',
+                show:true,
+                isActive: false,
+                lists : ['Laravel','JavaScript','Node','Angular'],
+                btnStyle : {
+                    marginTop : '10px'
+                },
+                shows : false
+            },
+            methods:{
+                enableButton : function () {
+                    this.shows = true;
+                },
+                disableButton : function () {
+                    this.shows = false
+                }
+            }
+        });
+    </script>
 </body>
 </html>
