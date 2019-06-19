@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Learning</title>
+    <link rel="stylesheet" href="../lib/bootstrap.css">
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/bootstrap.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div id="app">
+
+            <h3>Method : {{reverseM()}}</h3>
+            <h3>Method : {{reverseM()}}</h3>
+            <h3>Method : {{reverseM()}}</h3>
+
+            <h3>Computed : {{reverseC}}</h3>
+            <h3>Computed : {{reverseC}}</h3>
+            <h3>Computed : {{reverseC}}</h3>
+
+            <input type="text" v-model="km" class="form-control">
+            <input type="text" v-model="m" class="form-control">
+            <input type="text" class="form-control" v-model="fullName">
+
+            <h3>{{firstName}}</h3>
+            <h3>{{lastName}}</h3>
+        </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el : '#app',
+            data:{
+                km:0,
+                m:0,
+                firstName : 'ashik',
+                lastName : 'Khan'
+
+            },
+            methods:{
+                reverseM:function () {
+                    return Date.now();
+                },
+
+
+            },
+            computed:{
+                reverseC:function () {
+                    return Date.now();
+                },
+                fullName : {
+                    get:function () {
+                        return this.firstName + ' ' + this.lastName;
+                    },
+                    set:function (name) {
+                        var name = name.split(' ');
+                        this.firstName = name[0];
+                        this.lastName = name[1];
+                    }
+                }
+
+            },
+            watch:{
+                km:function (val) {
+                    this.km = val;
+                    this.m = val*1000;
+                },
+                m:function (val) {
+                    this.km = val/1000;
+                    this.m = val;
+                }
+            },
+
+
+
+        });
+    </script>
+</body>
+</html>
